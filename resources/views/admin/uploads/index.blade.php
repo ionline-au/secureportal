@@ -62,7 +62,7 @@
                                         <li>No File Found</li>
                                     @endif()
                                     <!--
-                                        @if($old_download = DB::select("select * from media where name = '" . addslashes($upload->upload_name) . "' LIMIT 1"))
+                                        @if($old_download = DB::select('SELECT * FROM media WHERE name = ? LIMIT 1', [$upload->upload_name]))
                                             @foreach($old_download as $key_old => $media_old)
                                                 <li><a href="/storage/999999999/{{ str_replace('\'','',$media_old->file_name) }}" target="_blank">{{ substr($media_old->file_name, 14) }}</a></li>
                                                 {{--<p style="text-align: center;padding:0;margin:0;">Old Data Not Available - Please Check Back Soon</p>--}}

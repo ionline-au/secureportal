@@ -30,10 +30,10 @@ class UploadsController extends Controller
         $uploads = Upload::with(['name', 'media'])->where('name_id', Auth::id())->get();
 
         // check to see if this user has the order_column 999999999 - if so this is an imported user and thus has the files stores elsewhere
-        $old_files = DB::select('select * from uploads where name_id = ' . Auth::id());
+        $old_files = DB::select('SELECT * FROM uploads WHERE name_id = ?', [Auth::id()]);
         if ($old_files) {
             foreach ($old_files as $old_file) {
-                $uploads->old_download = DB::select("select * from media where name = '" . addslashes($old_file->upload_name) . "' LIMIT 1");
+                $uploads->old_download = DB::select('SELECT * FROM media WHERE name = ? LIMIT 1', [$old_file->upload_name]);
             }
         }
         return view('frontend.uploads.index', compact('uploads'));

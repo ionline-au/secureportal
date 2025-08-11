@@ -35,7 +35,7 @@ class UploadsController extends Controller
         // now get the old downloads
         foreach ($uploads as $key => $upload) {
             if ($upload->media == '') {
-                $uploads[$key]->old_download = DB::select("select * from media where name = '" . $upload->upload_name . "' LIMIT 1");
+                $uploads[$key]->old_download = DB::select('SELECT * FROM media WHERE name = ? LIMIT 1', [$upload->upload_name]);
             }
         }
 
