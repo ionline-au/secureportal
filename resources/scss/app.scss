@@ -1,0 +1,385 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+
+body, html, .c-app {
+  font-family: 'Raleway', serif !important;
+}
+
+// vars
+$primary-blue: #004878;
+$dull-blue: #3c4b64;
+;
+
+.btn-primary {
+  background-color: $primary-blue !important;
+  border: none;
+}
+
+.btn-danger {
+  background-color: $primary-blue !important;
+  border: none;
+}
+
+.btn-link {
+  color: $primary-blue !important;
+}
+
+.rounded {
+  border-radius: 10px;
+}
+
+.rounded p {
+  color: white;
+}
+
+.button-bold {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.c-sidebar-nav-item a, .c-sidebar-brand-full {
+  color: white !important;
+}
+
+.dropdown-item.active, .dropdown-item:active {
+  color: white !important;
+  text-decoration: none;
+  background-color: $dull-blue !important;
+}
+
+.btn-default {
+  background-color: $dull-blue !important;
+}
+
+.buttons-colvis, .buttons-copy, .buttons-csv {
+  display: none;
+}
+
+.card-header {
+  font-weight: bold;
+  background-color: $primary-blue;
+  color: white;
+  border: 1px solid $primary-blue;
+}
+
+.btn-success {
+  background-color: $primary-blue;
+  border: $primary-blue;
+}
+
+.dropzone {
+  min-height: 150px;
+  border: 1px solid #ccc;
+  background: white;
+  padding: 20px 20px;
+  border-radius: 5px;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+  box-sizing: border-box;
+  display: inline-block;
+  min-width: 1.5em;
+  padding: 0;
+  margin-left: 2px;
+  text-align: center;
+  text-decoration: none !important;
+  cursor: pointer;
+  *cursor: hand;
+  color: #333 !important;
+  border: 1px solid transparent;
+  border-radius: 2px;
+}
+
+.page-link {
+  position: relative;
+  display: block;
+  padding: .5rem;
+  /* margin-left: -1px; */
+  line-height: 1.25;
+  color: #007bff;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+}
+
+.page-item.active .page-link {
+  z-index: 1;
+  color: #fff !important;
+  background-color: $primary-blue !important;
+  /* border: none; */
+}
+
+.page-item.active .page-link:hover {
+  z-index: 1;
+  color: #fff !important;
+  background-color: $primary-blue !important;
+  /* border: none; */
+}
+
+.sorting {
+  font-weight: normal;
+}
+
+#DataTables_Table_0_paginate > ul > li.paginate_button.page-item.active {
+  padding: 0;
+  margin: 0;
+  background-color: #004878 !important;
+  height: 37px;
+  overflow: hidden;
+  margin-top: 1px;
+  padding-left: 2px;
+  padding-right: 2px;
+  margin-left: 3px;
+  margin-right: 3px;
+  border: none;
+}
+
+.green-bg {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(53, 121, 9, 1) 0%, rgba(0, 255, 85, 1) 100%);
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.green-bg:hover {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(180deg, rgba(2, 0, 36, 1) 0%, rgba(53, 121, 9, 1) 0%, rgba(0, 255, 85, 1) 100%);
+  padding: 1rem;
+}
+
+.blue-bg {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 0%, rgba(0, 212, 255, 1) 100%);
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.blue-bg:hover {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(180deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 0%, rgba(0, 212, 255, 1) 100%);
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.yellow-bg {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(242deg, rgba(2, 0, 36, 1) 0%, rgba(241, 201, 78, 1) 0%, rgba(255, 132, 0, 1) 100%);
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.yellow-bg:hover {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(241, 201, 78, 1) 0%, rgba(255, 132, 0, 1) 100%);
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.red-bg {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(242deg, rgba(2, 0, 36, 1) 0%, rgba(241, 78, 78, 1) 0%, rgba(255, 0, 0, 1) 100%);
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.red-bg:hover {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(241, 78, 78, 1) 0%, rgba(255, 0, 0, 1) 100%);
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.page-item.active .page-link {
+  z-index: 1;
+  color: #fff !important;
+  background-color: #004878 !important;
+  border: none;
+}
+
+.btn {
+  color: #fff !important;
+}
+
+a {
+  color: #004878 !important;
+}
+
+table a {
+  font-size: 13px !important;
+}
+
+.ck-editor__editable,
+textarea {
+  min-height: 150px;
+}
+
+.datatable {
+  width: 100% !important;
+}
+
+table.dataTable tbody td.select-checkbox::before,
+table.dataTable tbody td.select-checkbox::after,
+table.dataTable tbody th.select-checkbox::before,
+table.dataTable tbody th.select-checkbox::after {
+  top: 50%;
+}
+
+.dataTables_length,
+.dataTables_filter,
+.dt-buttons {
+  margin-bottom: 0.333em;
+  margin-top: .2rem;
+}
+
+.dataTables_filter {
+  margin-right: .2rem;
+}
+
+.dt-buttons .btn {
+  margin-left: 0.333em;
+  border-radius: 0;
+}
+
+.table.datatable {
+  box-sizing: border-box;
+  border-collapse: collapse;
+}
+
+table.dataTable thead th {
+  border-bottom: 2px solid #c8ced3;
+}
+
+.dataTables_wrapper.no-footer .dataTables_scrollBody {
+  border-bottom: 1px solid #c8ced3;
+}
+
+.select2 {
+  max-width: 100%;
+  width: 100% !important;
+}
+
+.select2-selection__rendered {
+  padding-bottom: 5px !important;
+}
+
+.has-error .invalid-feedback {
+  display: block !important;
+}
+
+.btn-info,
+.badge-info {
+  color: white;
+}
+
+table.dataTable thead .sorting,
+table.dataTable thead .sorting_asc,
+table.dataTable thead .sorting_desc {
+  background-image: none;
+}
+
+.sidebar .nav-item {
+  cursor: pointer;
+}
+
+.btn-default {
+  color: #23282c;
+  background-color: #f0f3f5;
+  border-color: #f0f3f5;
+}
+
+.btn-default.focus,
+.btn-default:focus {
+  box-shadow: 0 0 0 .2rem rgba(209, 213, 215, .5);
+}
+
+.btn-default:hover {
+  color: #23282c;
+  background-color: #d9e1e6;
+  border-color: #d1dbe1;
+}
+
+.btn-group-xs > .btn,
+.btn-xs {
+  padding: 1px 5px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
+}
+
+.searchable-title {
+  font-weight: bold;
+}
+
+.searchable-fields {
+  padding-left: 5px;
+}
+
+.searchable-link {
+  padding: 0 5px 0 5px;
+}
+
+.searchable-link:hover {
+  cursor: pointer;
+  background: #eaeaea;
+}
+
+.select2-results__option {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.form-group .required::after {
+  content: " *";
+  color: red;
+}
+
+.form-check.is-invalid ~ .invalid-feedback {
+  display: block;
+}
+
+.c-sidebar-brand .c-sidebar-brand-full:hover {
+  color: inherit;
+}
+
+.custom-select.form-control-sm {
+  padding: 0.25rem 1.5rem;
+}
+
+.c-sidebar-nav-link:hover {
+  background-color: $primary-blue !important;
+}
+
+.help-block {
+  font-style: italic;
+  font-weight: bold;
+  font-size: 13px;
+  padding-top: 5px;
+}
+
+.files_ul {
+  padding: 0;
+  margin: 0;
+
+  li {
+    padding: 0;
+    margin: 0;
+    margin-left: 25px;
+  }
+}
+
+.files_ul_front {
+  padding: 0;
+  margin: 0;
+
+  li {
+    padding: 0;
+    margin: 0;
+    margin-left: 25px;
+  }
+}
+
+.btn-danger {
+  background-color: darkred !important;
+}
+
+.buttons-print, .buttons-pdf {
+  display: none;
+}
