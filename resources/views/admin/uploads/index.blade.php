@@ -51,7 +51,12 @@
                                 <ul class="files_ul">
                                     @if($upload->upload)
                                         @foreach($upload->upload as $key => $media)
-                                            <li><a href="{{ $media->getUrl() }}" target="_blank">{{ substr($media->file_name, 14) }}</a></li>
+                                            {{--<li><a href="{{ $media->getUrl() }}" target="_blank">{{ substr($media->file_name, 14) }}</a></li>--}}
+                                            <form method="post" action="{{ route('frontend.uploads.stream_download') }}" id="stream_download_{{ $media->id }}">
+                                                @csrf
+                                                <input type="hidden" name="media_id" value="{{ $media->id }}">
+                                            </form>
+                                            <li><a href="#" onclick="document.getElementById('stream_download_{{ $media->id }}').submit();">{{ substr($media->file_name, 14) }}</a></li>
                                         @endforeach
                                     @else()
                                         <li>No File Found</li>

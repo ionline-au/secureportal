@@ -165,4 +165,35 @@ class UploadsController extends Controller
 
     }
 
+    /**
+     * Streams the download of a file without logging it
+     */
+    public function stream_download(Request $request)
+    {
+
+        if (auth()->user()->is_staff != 1 || auth()->user()->is_admin != 1) {
+            abort(403, 'Unauthorized action.');
+        }
+
+        // get the media item
+        $media = Media::findOrFail($request->input('media_id'));
+
+        // check if the file exists
+        if (!file_exists($media->getPath())) {
+            return redirect()->back()->withErrors(['error' => 'File not found.']);
+        }
+
+        // stream the file to the user
+        $headers = [
+            'Content-Type' => $media->mime_type,
+            'Content-Disposition' => 'attachment; filename="' . $media->file_name . '"',
+            'Content-Length' => $media->size,
+        ];
+        return response()->stream(function () use ($media) {
+            echo file_get_contents($media->getPath());
+        }, 200, $headers);
+
+    }
+
+
 }

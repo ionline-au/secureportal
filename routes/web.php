@@ -84,6 +84,7 @@ Route::group(['as' => 'frontend.', 'namespace' => 'Frontend', 'middleware' => ['
     Route::get('uploads/index', 'UploadsController@index')->name('uploads.index');
     Route::get('uploads/create', 'UploadsController@create')->name('uploads.create');
     Route::post('uploads/record_download', 'UploadsController@record_download')->name('uploads.record_download');
+    Route::post('uploads/stream_download', 'UploadsController@stream_download')->name('uploads.stream_download');
     Route::delete('uploads/destroy', 'UploadsController@massDestroy')->name('uploads.massDestroy');
     Route::post('uploads/media', 'UploadsController@storeMedia')->name('uploads.storeMedia');
     Route::post('uploads/store', 'UploadsController@store')->name('uploads.store');
