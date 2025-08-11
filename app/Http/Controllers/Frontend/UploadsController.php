@@ -33,7 +33,7 @@ class UploadsController extends Controller
         $old_files = DB::select('select * from uploads where name_id = ' . Auth::id());
         if ($old_files) {
             foreach ($old_files as $old_file) {
-                $uploads->old_download = DB::select("select * from media where name = '" . addslashes($old_file->upload_name)  . "' LIMIT 1");
+                $uploads->old_download = DB::select("select * from media where name = '" . addslashes($old_file->upload_name) . "' LIMIT 1");
             }
         }
         return view('frontend.uploads.index', compact('uploads'));
@@ -66,7 +66,11 @@ class UploadsController extends Controller
             $accountant_email = config('app.default_admin_email_account');
         }
         if (filter_var($accountant_email, FILTER_VALIDATE_EMAIL)) {
-            Mail::to([$accountant_email,' info@acountinghouse.com'])->send(new UploadCompletedByClient($data));
+            try {
+                Mail::to($accountant_email)->send(new UploadCompletedByClient($data));
+            } catch (\Exception $e) {
+                \Log::error('Error sending upload completed email: ' . $e->getMessage());
+            }
         }
 
         // history
@@ -131,13 +135,34 @@ class UploadsController extends Controller
     }
 
     /**
-     * Stores the file download log then downloads the file
+     * Stores the file download log then downloads the file and streams the file to the user
      */
     public function record_download(Request $request)
     {
-        $friendly_name = explode('/', str_replace('/storage/app/public/','', $request->input('file')));
-        $friendly_name = substr($friendly_name[3], 14);
-        History::insertEvent(Auth::id(), 'download', 'Downloaded File: ' . $friendly_name);
-        return redirect($request->input('file'));
+
+        // get the media item
+        $media = Media::findOrFail($request->input('media_id'));
+        if ($media->model->name_id != Auth::id()) {
+            abort(403, 'Unauthorized action.');
+        }
+
+        // check if the file exists
+        if (!file_exists($media->getPath())) {
+            return redirect()->back()->withErrors(['error' => 'File not found.']);
+        }
+
+        History::insertEvent(Auth::id(), 'download', 'Downloaded File: ' . $media->file_name);
+
+        // stream the file to the user
+        $headers = [
+            'Content-Type' => $media->mime_type,
+            'Content-Disposition' => 'attachment; filename="' . $media->file_name . '"',
+            'Content-Length' => $media->size,
+        ];
+        return response()->stream(function () use ($media) {
+            echo file_get_contents($media->getPath());
+        }, 200, $headers);
+
     }
+
 }

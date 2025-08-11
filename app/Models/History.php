@@ -18,6 +18,7 @@ class History extends Model
         'type',
         'notes',
         'user_id',
+        'ip',
         'updated_at'
     ];
 
@@ -33,6 +34,7 @@ class History extends Model
         $history->type = $type;
         $history->user_id = $user;
         $history->notes = $description;
+        $history->ip = request()->ip() ?? '';
         $history->updated_at = \Carbon\Carbon::now()->toDateTimeString();;
         $history->created_at = \Carbon\Carbon::now()->toDateTimeString();;
         $history->save();

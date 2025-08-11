@@ -42,20 +42,13 @@
                                             <td>
                                                 <ul class="files_ul_front">
                                                     @foreach($upload->upload as $key => $media)
-                                                        <!--<li><a href="{{ route('frontend.uploads.record_download') }}?file={{ env('PUBLIC_DOWNLOAD_PATH') . $media->id . '/' . $media->file_name }}">{{ substr($media->file_name, 14) }}</a></li>-->
-                                                        <li><a href="{{ env('PUBLIC_DOWNLOAD_PATH') . $media->id . '/' . $media->file_name }}">{{ substr($media->file_name, 14) }}</a></li>
+                                                        <form method="post" action="{{ route('frontend.uploads.record_download') }}" id="record_download_{{ $media->id }}">
+                                                            @csrf
+                                                            <input type="hidden" name="media_id" value="{{ $media->id }}">
+                                                        </form>
+                                                        <li><a href="#" onclick="document.getElementById('record_download_{{ $media->id }}').submit();">{{ substr($media->file_name, 14) }}</a></li>
                                                     @endforeach
                                                 </ul>
-                                                <!--
-                                                    @if($old_download = DB::select("select * from media where name = '" . addslashes($upload->upload_name) . "' LIMIT 1"))
-                                                        <ul class="files_ul_front">
-                                                            @foreach($old_download as $key_old => $media_old)
-                                                                {{--<li><a href="/storage/999999999/{{ $media_old->file_name }}" target="_blank">{{ substr($media_old->file_name, 14) }}</a></li>--}}
-                                                                <p style="text-align: center;padding:0;margin:0;">Old Data Not Available - Please Check Back Soon</p>
-                                                            @endforeach
-                                                        </ul>
-                                                    @endif()
-                                                -->
                                             </td>
                                         </tr>
                                     @endforeach
